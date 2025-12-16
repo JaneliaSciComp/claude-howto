@@ -1,7 +1,7 @@
 # Janelia Claude-a-thon (Dec 16, 2025)
 
 > [!IMPORTANT]
-> This is a skeleton used during live training. Yuo can view the [walkthrough version](Walkthrough.md) of these instructions for the complete details.
+> This is a skeleton for use during live training. Yuo can view the full [walkthrough](Walkthrough.md) for the complete details and commentary.
 
 ## Agenda
 
