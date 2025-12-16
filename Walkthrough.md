@@ -1,6 +1,6 @@
-# Janelia Claude-a-thon (Dec 16, 2025)
+# Janelia Claude-a-thon
 
-This is a hands-on hacking session for new users of Claude Code to build familiarity with its capabilities. Experienced users are welcome to attend and help new users to get started.
+This is a hands-on hacking session for new users of Claude Code to build familiarity with its capabilities. 
 
 ## Agenda
 
@@ -21,28 +21,35 @@ If you don't have a Claude subscription, navigate to [https://claude.ai/upgrade]
 
 ## Installation and Setup
 
-1) [Install Claude Code](https://code.claude.com/docs/en/setup) on your laptop:
+### 1) Install Claude Code
+
+You can use this command to install [Claude Code](https://code.claude.com/docs/en/setup) on your laptop:
 ```
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 Make sure to follow the installer's advice about adding the path to your `.bashrc` file.
 
-2) Now create a folder that you can use for this hackathon and run Claude Code inside of it:
+### 2) Start Claude Code
+
+Now create a folder that you can use for this hackathon and run Claude Code inside of it:
 ```
 mkdir claude-a-thon
 cd claude-a-thon
 claude
 ```
+Accept the default look and feel.
 
-3) Login using "Claude account with subscription" and follow the browser auth flow to authorize Claude Code.
+### 3) Login 
 
-It is safe to accept the default settings.
+Continue following the prompts (😉) to login using "Claude account with subscription" and follow the browser auth flow to authorize Claude Code. It is safe to accept the default settings.
 
 ## Exercise 1: Bug Fixing
 
 Paste this into prompt into Claude Code:
 ```
-Clone this project and get it running: https://github.com/google/neuroglancer Then add a button to the top right (to the right of Edit JSON State) which copies the current URL to the clipboard.
+Clone this project and get it running: https://github.com/google/neuroglancer
+Then add a button to the top right (to the right of Edit JSON State) which
+copies the current URL to the clipboard.
 ```
 
 ### Permissions
@@ -65,19 +72,35 @@ When starting work on a new problem, always use a fresh context. This can be acc
 
 After clearing the context, execute this prompt:
 ```
-Clone and analyze the project at https://github.com/JaneliaSciComp/BigStitcher and produce a Markdown file that summarizes the structure and how this project should be developed.
+Clone and analyze the project at https://github.com/JaneliaSciComp/BigStitcher
+and produce a Markdown file that summarizes the structure and how this project
+should be developed.
 ```
 
 Feel free to replace the URL with another project. Claude Code is very useful for understanding projects that you are getting started with. It's also great for writing/updating documentation after changes are made.
 
+### Thinking
+
+There are some bugs with the [thinking settings](https://github.com/anthropics/claude-code/issues/10623) in the latest versions of Claude Code. The latest version is always thinking. To disable it, set `MAX_THINKING_TOKENS=0` in the shell environment:
+```
+MAX_THINKING_TOKENS=0 claude
+```
 
 ## Exercise 3: Rapid Prototyping
 
-Let's first configure a sandbox so that we can give Claude Code a little more freedom to act. You can configure a default sandbox that you can enable with `/sandbox`. Enable that (use defaults) and then paste in this prompt:
+Let's first configure a sandbox so that we can give Claude Code a little more freedom to act. Use the `/sandbox` command to enable it (you can use the defaults). 
+
+Now paste in this prompt to one-shot a prototype:
 
 ```
-Create a Pixi Python project and use the zarr library to open this dataset: s3://janelia-cosem-datasets/jrc_mus-hippocampus-3/jrc_mus-hippocampus-3.zarr  Create a CLI that will let me extract a random 1024x1024xN crop (configurable number of z slices) and encode the frames into an h264 movie.
+Create a Pixi Python project and use the zarr library to open this dataset:
+s3://janelia-cosem-datasets/jrc_mus-hippocampus-3/jrc_mus-hippocampus-3.zarr
+Create a CLI that will let me extract a random 1024x1024xN crop (configurable
+number of z slices) and encode the frames into an h264 movie.
 ```
+
+You are now "vibe coding"!
+
 
 
 
