@@ -59,6 +59,8 @@ Then add a button to the top right (to the right of Edit JSON State) which
 copies the current URL to the clipboard.
 ```
 
+As Claude starts working on this, you can watch what it does. Use **Ctrl-O** to toggle thinking if necessary. Note that you can always press **Escape** to interrupt Claude if it's going down the wrong path.
+
 ### Permissions
 
 As Claude Code works through the problem it will prompt you for any action it needs to take. Be careful with allowing items with "Don't ask again"! It's better to run Claude Code in a sandbox before giving it free priviledges (more on this later).
@@ -77,7 +79,10 @@ Claude can easily find the place to make the change, and write correct code for 
 
 When starting work on a new problem, always use a fresh context. This can be accomplished with the `/clear` command. It's important to manage your context over time. You may hit token limits, and the model may suffer context collapse even before that happens. Context collapse means that the model will not be able to use all of the information in them model. Use `/context` to interrogate the current state of the context. You can use `/compact` to summarize the current context into fewer tokens.
 
-After clearing the context, execute this prompt:
+Let's also switch the model. The default model (Sonnet) is great for simple tasks, but when you want the best reasoning and analysis it's a good idea to switch to Opus. You can do this via the `/model` command. Remember that using Opus will use up your quota much faster, but it can be worth it. Use `/status` to view your current quota.
+
+Now submit this prompt:
+
 ```
 Clone and analyze the project at https://github.com/JaneliaSciComp/BigStitcher
 and produce a Markdown file that summarizes the structure and how this project
@@ -95,9 +100,7 @@ MAX_THINKING_TOKENS=0 claude
 
 ## Exercise 3: Rapid Prototyping
 
-Let's first configure a sandbox so that we can give Claude Code a little more freedom to act. Use the `/sandbox` command to enable it (you can use the defaults). 
-
-Now paste in this prompt to one-shot a prototype:
+It's ideal to run Claude in a sandbox which restricts file system and network access. Let's first configure a sandbox so that we can give Claude Code a little more freedom to act. You can configure a default sandbox that you can enable with `/sandbox`. Enable that (use defaults) and then paste in this prompt:
 
 ```
 Create a Pixi Python project and use the zarr library to open this dataset:
