@@ -70,7 +70,9 @@ should be developed.
 
 Other useful commands:
 * `/context` - show the current state of context usage
-* `/compact` - summarize the current tokens to use fewer tokens
+* `/compact` - summarize the current context to use fewer tokens
+* `/model` - switch between Sonnet and Opus models
+* `/status` - view your current quota usage and other info
 
 
 ## Exercise 3: Rapid Prototyping
