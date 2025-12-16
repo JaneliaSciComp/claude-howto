@@ -26,19 +26,25 @@ Sign up for the "Pro" subscription, billed monthly.
 
 ## Installation and Setup
 
-1) [Install Claude Code](https://code.claude.com/docs/en/setup) on your laptop:
+### 1) Install Claude Code
+
+Use this command to install [Claude Code](https://code.claude.com/docs/en/setup):
 ```
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-2) Create a folder that you can use for this hackathon and run Claude Code inside of it:
+### 2) Launch Claude Code
+
+Create a folder that you can use for this hackathon and run Claude Code inside of it:
 ```
 mkdir claude-a-thon
 cd claude-a-thon
 claude
 ```
 
-3) Login using "Claude account with subscription" and follow the browser auth flow to authorize Claude Code. 
+### 3) Login 
+
+Login using "Claude account with subscription" and follow the browser auth flow to authorize Claude Code. 
 
 ## Exercise 1: Bug Fixing
 
