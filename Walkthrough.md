@@ -52,7 +52,7 @@ Continue following the prompts (😉) to login using "Claude account with subscr
 
 ## Exercise 1: Bug Fixing
 
-Paste this into prompt into Claude Code:
+Paste this prompt into Claude Code:
 ```
 Clone this project and get it running: https://github.com/google/neuroglancer
 Then add a button to the top right (to the right of Edit JSON State) which
@@ -63,13 +63,13 @@ As Claude starts working on this, you can watch what it does. Use **Ctrl-O** to 
 
 ### Permissions
 
-As Claude Code works through the problem it will prompt you for any action it needs to take. Be careful with allowing items with "Don't ask again"! It's better to run Claude Code in a sandbox before giving it free priviledges (more on this later).
+As Claude Code works through the problem it will prompt you for any action it needs to take. Be careful with allowing items with "Don't ask again"! It's better to run Claude Code in a sandbox before giving it free privileges (more on this later).
 
 You can use the `/permissions` command to read/modify your permission scheme. Alternatively, edit `.claude/settings.local.json` either in your project or in your home directory. This will require restarting Claude Code however.
 
 ### Planning Mode
 
-You can switch to plan mode using shift-tab and try the prompt again. This time, Claude takes it's time to analyze the problem and come up with a better solution.
+You can switch to plan mode using shift-tab and try the prompt again. This time, Claude takes its time to analyze the problem and come up with a better solution.
 
 ### The Solution
 
@@ -77,7 +77,7 @@ Claude can easily find the place to make the change, and write correct code for 
 
 ## Exercise 2: Code Analysis
 
-When starting work on a new problem, always use a fresh context. This can be accomplished with the `/clear` command. It's important to manage your context over time. You may hit token limits, and the model may suffer context collapse even before that happens. Context collapse means that the model will not be able to use all of the information in them model. Use `/context` to interrogate the current state of the context. You can use `/compact` to summarize the current context into fewer tokens.
+When starting work on a new problem, always use a fresh context. This can be accomplished with the `/clear` command. It's important to manage your context over time. You may hit token limits, and the model may suffer context collapse even before that happens. Context collapse means that the model will not be able to use all of the information in the context. Use `/context` to interrogate the current state of the context. You can use `/compact` to summarize the current context into fewer tokens.
 
 Let's also switch the model. The default model (Sonnet) is great for simple tasks, but when you want the best reasoning and analysis it's a good idea to switch to Opus. You can do this via the `/model` command. Remember that using Opus will use up your quota much faster, but it can be worth it. Use `/status` to view your current quota.
 

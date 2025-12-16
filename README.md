@@ -48,7 +48,7 @@ Login using "Claude account with subscription" and follow the browser auth flow 
 
 ## Exercise 1: Bug Fixing
 
-Paste this into prompt into Claude Code:
+Paste this prompt into Claude Code:
 ```
 Clone this project and get it running: https://github.com/google/neuroglancer
 Then add a button to the top right (to the right of Edit JSON State) which
