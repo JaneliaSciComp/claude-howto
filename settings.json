@@ -1,0 +1,28 @@
+{
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true
+  },
+  "permissions": {
+    "allow": [
+      "Read(//groups/scicompsoft/home/rokickik/dev/**)",
+      "Edit(//groups/scicompsoft/home/rokickik/dev/**)",
+      "WebFetch",
+      "WebSearch",
+      "Bash(git clone:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)"
+    ],
+    "deny": [
+      "Read(**/.env*)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(**/secrets/**)",
+      "Read(**/credentials/**)",
+      "Read(**/.aws/**)",
+      "Read(**/.ssh/**)"
+    ]
+  },
+  "model": "opus",
+  "alwaysThinkingEnabled": true
+}
