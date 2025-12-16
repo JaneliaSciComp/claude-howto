@@ -1,4 +1,4 @@
-# Janelia Claude-a-thon
+# Janelia Claude-a-thon Walkthrough
 
 This is a hands-on hacking session for new users of Claude Code to build familiarity with its capabilities. 
 
