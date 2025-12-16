@@ -17,7 +17,14 @@ Please note that this workshop focuses on hands-on setup and foundational skills
 
 ## Create a Claude account
 
-If you don't have a Claude subscription, navigate to [https://claude.ai/upgrade](https://claude.ai/upgrade) and login with your Google Workspace account. Sign up for the "Pro" subscription, billed monthly.
+If you don't have a Claude subscription, navigate to [https://claude.ai/upgrade](https://claude.ai/upgrade) and login with your Google Workspace account. 
+
+Sign up for the "Pro" subscription, billed monthly.
+
+> [!IMPORTANT]
+> Make sure to disable the "Help improve Claude" setting found under Settings → Privacy.
+>
+> <img width="600" src="https://github.com/user-attachments/assets/1d88bd0e-c04d-4011-a451-351c74bae73c" />
 
 ## Installation and Setup
 
