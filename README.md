@@ -14,7 +14,7 @@
 
 ## Create a Claude account
 
-If you don't have a Claude subscription, navigate to [https://claude.ai/upgrade](https://claude.ai/upgrade) and login with your Google Workspace account. 
+Navigate to [https://claude.ai/upgrade](https://claude.ai/upgrade) and login with your Google Workspace account. 
 
 Sign up for the "Pro" subscription, billed monthly.
 
@@ -33,7 +33,7 @@ Use this command to install [Claude Code](https://code.claude.com/docs/en/setup)
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-### 2) Launch Claude Code
+### 2) Start Claude Code
 
 Create a folder that you can use for this hackathon and run Claude Code inside of it:
 ```
@@ -56,9 +56,11 @@ copies the current URL to the clipboard.
 ```
 
 Useful commands:
+* **Escape** - interrupt Claude
+* **Ctrl-O** - show thinking
 * `/permissions` - allow or deny Claude access to specific actions
-
-
+* **Shift-Tab** - planning mode
+ 
 ## Exercise 2: Code Analysis
 
 Clear the context with `/clear`, then paste in this prompt:
