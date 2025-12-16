@@ -69,7 +69,9 @@ You can use the `/permissions` command to read/modify your permission scheme. Al
 
 ### Planning Mode
 
-You can switch to plan mode using shift-tab and try the prompt again. This time, Claude takes its time to analyze the problem and come up with a better solution.
+You can switch to plan mode using shift-tab and try the prompt again. This time, Claude takes its time to analyze the problem and come up with a better solution. In some cases it might ask you clarifying questions, for example:
+
+<img width="500" alt="Screenshot 2025-12-15 at 7 05 20 PM" src="https://github.com/user-attachments/assets/4748c0c3-78d7-4f4a-b719-cdfad305b7f9" />
 
 ### The Solution
 
