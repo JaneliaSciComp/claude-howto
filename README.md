@@ -1,7 +1,7 @@
 # Janelia Claude-a-thon (Dec 16, 2025)
 
 > [!NOTE]
-> This are skeleton instructions for use during live training. View the [complete walkthrough](Walkthrough.md) for additional details.
+> This are skeleton instructions for use during live training. Everything you need to copy and paste is in this document. You can also view the [annotated walkthrough](Walkthrough.md) for additional details.
 
 ## Agenda
 
