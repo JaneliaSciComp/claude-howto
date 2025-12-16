@@ -59,11 +59,21 @@ Then add a button to the top right (to the right of Edit JSON State) which
 copies the current URL to the clipboard.
 ```
 
-As Claude starts working on this, you can watch what it does. Use **Ctrl-O** to toggle thinking if necessary. Note that you can always press **Escape** to interrupt Claude if it's going down the wrong path.
+As Claude starts working on this, you can watch what it does. Note that you can always press **Escape** to interrupt Claude if it's going down the wrong path.
+
+### Thinking
+
+Use **Ctrl-O** to show what Claude is thinking about.
+
+> [!NOTE]
+> There are some bugs with the [thinking settings](https://github.com/anthropics/claude-code/issues/10623) in the latest versions of Claude Code. The latest version is always thinking. To disable it, you need to set `MAX_THINKING_TOKENS=0` in the shell environment:
+> ```
+> MAX_THINKING_TOKENS=0 claude
+> ```
 
 ### Permissions
 
-As Claude Code works through the problem it will prompt you for any action it needs to take. Be careful with allowing items with "Don't ask again"! It's better to run Claude Code in a sandbox before giving it free privileges (more on this later).
+As Claude works through the problem it will prompt you for any action it needs to take. Be careful with allowing items with "Don't ask again"! It's better to run Claude in a sandbox before giving it free privileges (more on this later).
 
 You can use the `/permissions` command to read/modify your permission scheme. Alternatively, edit `.claude/settings.local.json` either in your project or in your home directory. This will require restarting Claude Code however.
 
@@ -92,13 +102,6 @@ should be developed.
 ```
 
 Feel free to replace the URL with another project. Claude Code is very useful for understanding projects that you are getting started with. It's also great for writing/updating documentation after changes are made.
-
-### Thinking
-
-There are some bugs with the [thinking settings](https://github.com/anthropics/claude-code/issues/10623) in the latest versions of Claude Code. The latest version is always thinking. To disable it, set `MAX_THINKING_TOKENS=0` in the shell environment:
-```
-MAX_THINKING_TOKENS=0 claude
-```
 
 ## Exercise 3: Rapid Prototyping
 
