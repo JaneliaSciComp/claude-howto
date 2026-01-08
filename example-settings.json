@@ -1,14 +1,15 @@
 {
   "sandbox": {
-    "enabled": true,
-    "autoAllowBashIfSandboxed": true
+    "permissions": {
+      "additionalAllowedPaths": [
+        "~/.pixi",
+        "~/.local/share/pixi"
+      ]
+    }
   },
   "permissions": {
+    "defaultMode": "acceptEdits",
     "allow": [
-      "Read(//groups/scicompsoft/home/rokickik/dev/**)",
-      "Edit(//groups/scicompsoft/home/rokickik/dev/**)",
-      "WebFetch",
-      "WebSearch",
       "Bash(git clone:*)",
       "Bash(git status:*)",
       "Bash(git log:*)"
@@ -17,12 +18,11 @@
       "Read(**/.env*)",
       "Read(**/*.pem)",
       "Read(**/*.key)",
+      "Read(**/var/**)",
       "Read(**/secrets/**)",
       "Read(**/credentials/**)",
       "Read(**/.aws/**)",
       "Read(**/.ssh/**)"
     ]
-  },
-  "model": "opus",
-  "alwaysThinkingEnabled": true
+  }
 }
