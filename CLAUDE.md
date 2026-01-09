@@ -16,6 +16,7 @@ Documentation and configuration for running Claude Code safely at Janelia Resear
 │   ├── LocalUserAccount.md # Unprivileged user sandboxing
 │   ├── NativeSandbox.md    # Built-in sandbox usage
 │   ├── NativeSandboxBug.md # macOS pixi issue
+│   ├── OtherTools.md       # Using Codex, Gemini CLI, Aider, etc.
 │   └── Sandboxing.md       # Overview of sandboxing approaches
 ├── example.py              # Example Python script (fetches zarr metadata from S3)
 ├── example-settings.json   # Example Claude Code settings

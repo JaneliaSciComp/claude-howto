@@ -21,10 +21,13 @@ Why Sandboxing is Essential:
 
 ## Recommendations
 
+Each of these methods is described in more detail in the sections below. Here's a high level summary:
+
 - **Development on trusted code**: Native sandbox is usually sufficient (but has some issues on Mac)
 - **Untrusted code or sensitive systems**: Use container or local user (requires firewall configuration)
 - **CI/CD environments**: Container isolation recommended
-- **Maximum security**: Combine container with restricted network access
+
+> **Using other AI coding tools?** The container sandboxing approach works with Codex, Gemini CLI, Aider, and others. See [OtherTools.md](OtherTools.md) for setup differences.
 
 ---
 

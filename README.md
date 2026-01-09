@@ -1,4 +1,4 @@
-# Claude Code How-To
+# Janelia Claude Code How-To
 
 A collection of tips, tricks, and setup guides for running [Claude Code](https://docs.anthropic.com/en/docs/claude-code) at Janelia Research Campus.
 
