@@ -5,6 +5,9 @@ set -e
 echo "Initializing network firewall..."
 sudo /usr/local/bin/init-firewall.sh
 
+# Fix ownership of .pixi volume (created as root by Docker)
+sudo chown -R "$(id -u):$(id -g)" .pixi 2>/dev/null || true
+
 # Initialize pixi environment and install package dependencies
 pixi install
 

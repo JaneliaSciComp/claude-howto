@@ -45,3 +45,5 @@ Once inside the container you can install dependencies and run Python commands:
 pixi install
 pixi run fileglancer start  # Run the Fileglancer bioimage browser
 ```
+
+
