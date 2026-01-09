@@ -19,4 +19,4 @@ fi
 
 echo "Dev container setup complete!"
 echo "Run 'claude --dangerously-skip-permissions' to start Claude Code"
-echo "Run 'pixi run fileglancer' to start fileglancer"
+echo "Run 'pixi run example' to run the example script"

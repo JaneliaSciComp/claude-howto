@@ -17,6 +17,7 @@ Documentation and configuration for running Claude Code safely at Janelia Resear
 │   ├── NativeSandbox.md    # Built-in sandbox usage
 │   ├── NativeSandboxBug.md # macOS pixi issue
 │   └── Sandboxing.md       # Overview of sandboxing approaches
+├── example.py              # Example Python script (fetches zarr metadata from S3)
 ├── example-settings.json   # Example Claude Code settings
 ├── pixi.toml               # Pixi package manager config
 └── README.md               # Project overview
@@ -29,7 +30,7 @@ pixi install                 # Set up local environment
 pixi run container-rebuild   # Build/rebuild the dev container
 pixi run container-shell     # Open a shell in the container
 pixi run claude              # Run Claude Code in the container
-pixi run fileglancer         # Run Fileglancer locally (example app)
+pixi run example             # Run the example Python script
 ```
 
 ## Dev Container

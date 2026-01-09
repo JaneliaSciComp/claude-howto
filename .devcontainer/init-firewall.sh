@@ -62,6 +62,24 @@ while read -r cidr; do
     ipset add allowed-domains "$cidr" -exist
 done < <(echo "$gh_ranges" | jq -r '(.web + .api + .git)[]' | aggregate -q)
 
+# Fetch AWS IP ranges and add S3 ranges for us-east-1 (where janelia-cosem-datasets is hosted)
+echo "Fetching AWS S3 IP ranges..."
+aws_ranges=$(curl -s https://ip-ranges.amazonaws.com/ip-ranges.json)
+if [ -z "$aws_ranges" ]; then
+    echo "ERROR: Failed to fetch AWS IP ranges"
+    exit 1
+fi
+
+echo "Processing AWS S3 IPs (us-east-1)..."
+while read -r cidr; do
+    if [[ ! "$cidr" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/[0-9]{1,2}$ ]]; then
+        echo "ERROR: Invalid CIDR range from AWS: $cidr"
+        exit 1
+    fi
+    echo "Adding AWS S3 range $cidr"
+    ipset add allowed-domains "$cidr" -exist
+done < <(echo "$aws_ranges" | jq -r '.prefixes[] | select(.service == "S3" and .region == "us-east-1") | .ip_prefix')
+
 # Resolve and add other allowed domains
 # Note: We use -exist flag on ipset add to ignore duplicates, since multiple
 # domains (e.g. pypi.org and files.pythonhosted.org) can resolve to the same CDN IPs

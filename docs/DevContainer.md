@@ -77,6 +77,7 @@ The container uses iptables to restrict outbound network access to allowed domai
 
 - **Anthropic**: api.anthropic.com, statsig.anthropic.com, sentry.io
 - **GitHub**: All GitHub IP ranges (fetched from api.github.com/meta)
+- **AWS S3**: us-east-1 IP ranges (fetched from ip-ranges.amazonaws.com)
 - **npm**: registry.npmjs.org
 - **Python/Pixi**: pypi.org, files.pythonhosted.org, conda.anaconda.org, conda-mapping.prefix.dev
 - **VS Code**: marketplace.visualstudio.com, vscode.blob.core.windows.net
@@ -119,11 +120,14 @@ npx @devcontainers/cli exec --workspace-folder . bash
 npx @devcontainers/cli up --workspace-folder .
 ```
 
-### Open a Shell
+### Open a shell and run the example code
 
 ```bash
 npx @devcontainers/cli exec --workspace-folder . bash
+pixi run example  # Executes inside the container
 ```
+
+The example code fetches data from AWS S3, so if this runs into errors it might mean that the network host allowances are not correctly configured. 
 
 ### Run Claude Code
 
@@ -135,12 +139,8 @@ claude --dangerously-skip-permissions
 npx @devcontainers/cli exec --workspace-folder . bash -lc "claude --dangerously-skip-permissions"
 ```
 
-### Run Fileglancer
+You can ask Claude Code to "run the example" and it should execute `pixi run example` successfully. 
 
-```bash
-# Inside the container
-pixi run fileglancer
-```
 
 ### Stop the Container
 
@@ -165,7 +165,7 @@ npx @devcontainers/cli up --workspace-folder . --remove-existing-container
 | Command | Description |
 |---------|-------------|
 | `pixi install` | Install pixi dependencies |
-| `pixi run fileglancer` | Run the fileglancer CLI |
+| `pixi run example` | Run the example Python script |
 | `claude` | Claude Code CLI |
 
 ## VS Code / Cursor

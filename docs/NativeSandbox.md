@@ -29,6 +29,8 @@ Add allowed paths and hosts in your settings file:
 }
 ```
 
+For more information, see Claude Code's [sandboxing documentation](https://code.claude.com/docs/en/sandboxing).
+
 ## Known Issues
 
 Some tools may fail due to blocked system calls. See [NativeSandboxBug.md](NativeSandboxBug.md) for a known issue with `pixi install` on macOS.
