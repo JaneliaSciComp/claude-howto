@@ -2,7 +2,7 @@
 
 ## Summary
 
-`pixi install` panics when run inside Claude Code's sandbox on macOS due to blocked access to the SystemConfiguration daemon.
+Running `pixi` or `uv` panics when run inside Claude Code's sandbox on macOS due to blocked access to the SystemConfiguration daemon.
 
 ## Error Message
 
