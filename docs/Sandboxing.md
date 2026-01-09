@@ -17,17 +17,10 @@ Claude Code includes a built-in sandbox that uses OS-level mechanisms to restric
 - Configurable via `/sandbox` command
 
 **Cons:**
-- Some tools may fail due to blocked system calls (see [NativeSandboxBug.md](NativeSandboxBug.md))
+- Some tools may fail due to blocked system calls
 - macOS Seatbelt can block Mach IPC needed by some Rust crates
 
-**Usage:**
-```bash
-# Sandbox is enabled by default
-claude
-
-# Check/modify sandbox settings
-# Use /sandbox command within Claude Code
-```
+See [NativeSandbox.md](NativeSandbox.md) for usage details and known issues.
 
 ## 2. Container Isolation
 
