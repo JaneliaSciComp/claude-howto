@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+# Initialize network firewall (restricts outbound to allowed domains)
+echo "Initializing network firewall..."
+sudo /usr/local/bin/init-firewall.sh
+
 # Initialize pixi environment and install package dependencies
 pixi install
 

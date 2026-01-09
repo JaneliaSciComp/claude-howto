@@ -3,6 +3,10 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
+  "runArgs": [
+    "--cap-add=NET_ADMIN",
+    "--cap-add=NET_RAW"
+  ],
   "features": {
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/node:1": {}
@@ -22,6 +26,11 @@
   "mounts": [
     "source=${localEnv:HOME}/.claude,target=/home/vscode/.claude,type=bind"
   ],
+  "remoteEnv": {
+    "NODE_OPTIONS": "--max-old-space-size=4096",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "CLAUDE_CODE_DISABLE_ANALYTICS": "1"
+  },
   "postCreateCommand": "bash .devcontainer/post-create.sh",
   "remoteUser": "vscode"
 }
