@@ -2,68 +2,6 @@
 
 Claude Code can execute arbitrary shell commands on your system. Sandboxing limits what those commands can access, protecting your system from unintended changes or data exposure.
 
-There are three main approaches to sandboxing Claude Code:
-
-## 1. Native Sandbox
-
-Claude Code includes a built-in sandbox that uses OS-level mechanisms to restrict file and network access.
-
-- **macOS**: Uses the Seatbelt framework (same technology as App Sandbox)
-- **Linux**: Uses Landlock (kernel 5.13+) with seccomp fallback
-
-**Pros:**
-- Zero setup required - enabled by default
-- Fine-grained control over file paths and network hosts
-- Configurable via `/sandbox` command
-
-**Cons:**
-- Some tools may fail due to blocked system calls
-- macOS Seatbelt can block Mach IPC needed by some Rust crates
-
-See [NativeSandbox.md](NativeSandbox.md) for usage details and known issues.
-
-## 2. Container Isolation
-
-Run Claude Code inside a Docker container, providing full OS-level isolation.
-
-**Pros:**
-- Complete isolation from host system
-- Reproducible environment
-- Works with VS Code Dev Containers
-
-**Cons:**
-- Requires Docker
-- Some overhead for container management
-- Need to mount Claude Code from host
-
-**Usage:**
-
-See [DevContainer.md](DevContainer.md) for a complete dev container setup.
-
-Quick start:
-```bash
-npx @devcontainers/cli up --workspace-folder .
-npx @devcontainers/cli exec --workspace-folder . bash -lc "claude --dangerously-skip-permissions"
-```
-
-## 3. Local User Account
-
-Run Claude Code as a separate unprivileged user, using Unix permissions for isolation.
-
-**Pros:**
-- No container overhead
-- Uses standard Unix security model
-- Easy to understand and audit
-
-**Cons:**
-- Requires creating/managing a separate user
-- Less granular than native sandbox
-- Shared kernel with main user
-
-**Usage:**
-
-See [LocalUserAccount.md](LocalUserAccount.md) for setup instructions on macOS and Linux.
-
 ## Comparison
 
 | Feature | Native Sandbox | Container | Local User |
@@ -81,3 +19,63 @@ See [LocalUserAccount.md](LocalUserAccount.md) for setup instructions on macOS a
 - **Untrusted code or sensitive systems**: Use container or local user isolation
 - **CI/CD environments**: Container isolation recommended
 - **Maximum security**: Combine container with restricted network access
+
+---
+
+## Details
+
+### Native Sandbox
+
+Claude Code includes a built-in sandbox that uses OS-level mechanisms to restrict file and network access.
+
+- **macOS**: Uses the Seatbelt framework (same technology as App Sandbox)
+- **Linux**: Uses Landlock (kernel 5.13+) with seccomp fallback
+
+**Pros:**
+- Zero setup required - enabled by default
+- Fine-grained control over file paths and network hosts
+- Configurable via `/sandbox` command
+
+**Cons:**
+- Some tools may fail due to blocked system calls
+- macOS Seatbelt can block Mach IPC needed by some Rust crates
+
+See [NativeSandbox.md](NativeSandbox.md) for usage details and known issues.
+
+### Container Isolation
+
+Run Claude Code inside a Docker container, providing full OS-level isolation.
+
+**Pros:**
+- Complete isolation from host system
+- Reproducible environment
+- Works with VS Code Dev Containers
+
+**Cons:**
+- Requires Docker
+- Some overhead for container management
+- Need to mount Claude Code from host
+
+See [DevContainer.md](DevContainer.md) for a complete dev container setup.
+
+Quick start:
+```bash
+npx @devcontainers/cli up --workspace-folder .
+npx @devcontainers/cli exec --workspace-folder . bash -lc "claude --dangerously-skip-permissions"
+```
+
+### Local User Account
+
+Run Claude Code as a separate unprivileged user, using Unix permissions for isolation.
+
+**Pros:**
+- No container overhead
+- Uses standard Unix security model
+- Easy to understand and audit
+
+**Cons:**
+- Requires creating/managing a separate user
+- Less granular than native sandbox
+- Shared kernel with main user
+
+See [LocalUserAccount.md](LocalUserAccount.md) for setup instructions on macOS and Linux.
