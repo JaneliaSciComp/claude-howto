@@ -6,17 +6,18 @@ Claude Code can execute arbitrary shell commands on your system. Sandboxing limi
 
 | Feature | Native Sandbox | Container | Local User |
 |---------|---------------|-----------|------------|
-| Setup complexity | None | Medium | Low |
+| Setup complexity | Low | Medium | Medium |
 | Isolation level | Process | OS | User |
 | Performance overhead | Minimal | Low | None |
 | File access control | Path-based | Mount-based | Permission-based |
 | Network control | Host allowlist | Full | iptables/pf |
 | GUI support | Yes | Limited | Yes (with config) |
+| Platform support | Linux, macOS | All (via Docker) | Linux, macOS |
 
 ## Recommendations
 
-- **Development on trusted code**: Native sandbox (default) is usually sufficient
-- **Untrusted code or sensitive systems**: Use container or local user isolation
+- **Development on trusted code**: Native sandbox is usually sufficient (but has some issues on Mac)
+- **Untrusted code or sensitive systems**: Use container or local user (requires configuration)
 - **CI/CD environments**: Container isolation recommended
 - **Maximum security**: Combine container with restricted network access
 
@@ -38,13 +39,14 @@ Claude Code includes a built-in sandbox that uses OS-level mechanisms to restric
 
 **Cons:**
 - Some tools may fail due to blocked system calls
-- macOS Seatbelt can block Mach IPC needed by some Rust crates
+- New feature, not well vetted
+- Claude could escape if there are [bugs in Cladue Code](https://github.com/anthropics/claude-code/issues/15789)
 
 See [NativeSandbox.md](NativeSandbox.md) for usage details and known issues.
 
 ### Container Isolation
 
-Run Claude Code inside a Docker container, providing full OS-level isolation.
+Run Claude Code inside a Docker container, providing full OS-level isolation. Gold standard for agent isolation.
 
 **Pros:**
 - Complete isolation from host system
@@ -52,9 +54,7 @@ Run Claude Code inside a Docker container, providing full OS-level isolation.
 - Works with VS Code Dev Containers
 
 **Cons:**
-- Requires Docker
 - Some overhead for container management
-- Need to mount Claude Code from host
 
 See [DevContainer.md](DevContainer.md) for a complete dev container setup.
 
@@ -66,7 +66,7 @@ npx @devcontainers/cli exec --workspace-folder . bash -lc "claude --dangerously-
 
 ### Local User Account
 
-Run Claude Code as a separate unprivileged user, using Unix permissions for isolation.
+Run Claude Code as a separate unprivileged user, using Unix permissions for isolation. This is missing network isolation and isn't recommended. 
 
 **Pros:**
 - No container overhead
@@ -75,7 +75,7 @@ Run Claude Code as a separate unprivileged user, using Unix permissions for isol
 
 **Cons:**
 - Requires creating/managing a separate user
+- No network isolation unless you configure it using a firewall
 - Less granular than native sandbox
 - Shared kernel with main user
 
-See [LocalUserAccount.md](LocalUserAccount.md) for setup instructions on macOS and Linux.

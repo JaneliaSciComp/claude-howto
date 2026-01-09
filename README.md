@@ -14,7 +14,6 @@ Learn about the different sandboxing approaches and how to configure them:
 
 - [Sandboxing Overview](docs/Sandboxing.md) - Comparison of native, container, and local user sandboxing methods
 - [Native Sandbox](docs/NativeSandbox.md) - Using Claude Code's built-in OS-level sandbox
-- [Local User Account](docs/LocalUserAccount.md) - Create a dedicated unprivileged user for isolation on macOS/Linux
 - [Dev Container Setup](docs/DevContainer.md) - Docker-based development environment with Python and Pixi
 
 ## Configuration
