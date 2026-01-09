@@ -1,6 +1,6 @@
 # Dev Container Usage
 
-This dev container provides a complete development environment with Python and pixi, configured to run Claude Code with network isolation.
+The devcontainer at the root of this repo provides a complete development environment with Python and pixi, configured to run Claude Code with network isolation.
 
 ## Prerequisites
 
