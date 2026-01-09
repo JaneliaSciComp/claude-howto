@@ -2,7 +2,7 @@
 authors = ["Konrad Rokicki <krokicki@gmail.com>"]
 channels = ["conda-forge"]
 name = "claude-howto"
-platforms = ["osx-arm64"]
+platforms = ["osx-arm64", "osx-64", "linux-aarch64", "linux-64"]
 version = "0.1.0"
 
 [tasks]
