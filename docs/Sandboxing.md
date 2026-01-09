@@ -22,9 +22,72 @@ Why Sandboxing is Essential:
 ## Recommendations
 
 - **Development on trusted code**: Native sandbox is usually sufficient (but has some issues on Mac)
-- **Untrusted code or sensitive systems**: Use container or local user (requires configuration)
+- **Untrusted code or sensitive systems**: Use container or local user (requires firewall configuration)
 - **CI/CD environments**: Container isolation recommended
 - **Maximum security**: Combine container with restricted network access
+
+---
+
+## DevContainers vs Native Sandbox
+
+### Things DevContainers Can Do That Native Sandbox Cannot
+
+| Capability | Why |
+|------------|-----|
+| Run a completely different OS/distro | Container can be Ubuntu while host is macOS |
+| Isolate installed packages | `npm install -g` stays in container, doesn't pollute host |
+| Run conflicting tool versions | Node 18 in one container, Node 22 in another |
+| Provide service dependencies | Postgres, Redis, etc. via docker-compose |
+| Guarantee reproducibility | Team shares identical environment via Dockerfile |
+| Work on Windows | Native sandbox doesn't support Windows |
+| Full environment reset | Delete container, rebuild fresh |
+| Custom kernel parameters | sysctl settings, ulimits isolated to container |
+
+### Things Native Sandbox Can Do That DevContainers Cannot
+
+| Capability | Why |
+|------------|-----|
+| Access host GPU directly | No Docker GPU passthrough complexity |
+| Use macOS-specific tools | Xcode, macOS Keychain, system frameworks |
+| Native filesystem performance | No Docker volume overhead |
+| Use host's authenticated tools | Your `gh`, `gcloud`, `aws` CLI sessions |
+| Zero startup latency | No container boot time |
+| Access host services | localhost services without port mapping |
+| Lower memory footprint | No Docker daemon overhead |
+
+---
+
+## Network Isolation
+
+Network isolation prevents Claude from exfiltrating data or downloading malicious payloads. While filesystem sandboxing limits local access, network restrictions prevent communication with unauthorized external services.
+
+**Why it matters:**
+- Prevents data exfiltration to arbitrary endpoints
+- Blocks downloads of malicious scripts or binaries
+- Limits exposure if Claude is compromised via prompt injection
+- Provides audit trail of allowed network destinations
+
+**Implementation approaches:**
+
+| Method | Mechanism | Granularity |
+|--------|-----------|-------------|
+| Native sandbox | Host allowlist | Domain-level |
+| Container firewall | iptables + ipset | IP/CIDR-level |
+| Local user | iptables/pf rules | IP/port-level |
+| Cloud-based | Cloud provider VPC/security groups | Full control |
+
+**Our devcontainer approach** uses iptables with ipset to allow only specific IP ranges:
+- Fetches GitHub IP ranges from `api.github.com/meta`
+- Fetches AWS S3 IP ranges from `ip-ranges.amazonaws.com/ip-ranges.json`
+- Resolves individual domains (PyPI, npm, Anthropic API) to IPs at startup
+- Blocks all other outbound traffic
+
+This is more robust than domain-based filtering because:
+- DNS can be spoofed or tunneled
+- CDNs share IPs across many domains
+- IP allowlists are harder to bypass
+
+See [DevContainer.md](DevContainer.md) for the full firewall configuration.
 
 ---
 
