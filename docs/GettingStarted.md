@@ -30,7 +30,7 @@ Sign up for the "Pro" subscription, billed monthly.
 
 ### 1) Install Claude Code
 
-You can use this command to install [Claude Code](https://code.claude.com/docs/en/setup) on your laptop:
+You can use this command to install [Claude Code](https://docs.anthropic.com/en/docs/claude-code) on your laptop:
 ```
 curl -fsSL https://claude.ai/install.sh | bash
 ```
@@ -63,13 +63,7 @@ As Claude starts working on this, you can watch what it does. Note that you can 
 
 ### Thinking
 
-Use **Ctrl-O** to show what Claude is thinking about.
-
-> [!NOTE]
-> There are some bugs with the [thinking settings](https://github.com/anthropics/claude-code/issues/10623) in the latest versions of Claude Code. The latest version is always thinking. To disable it, you need to set `MAX_THINKING_TOKENS=0` in the shell environment:
-> ```
-> MAX_THINKING_TOKENS=0 claude
-> ```
+Use **Ctrl-O** to toggle visibility of Claude's thinking process. Extended thinking helps Claude reason through complex problems.
 
 ### Permissions
 
@@ -115,7 +109,3 @@ number of z slices) and encode the frames into an h264 movie.
 ```
 
 You are now "vibe coding"!
-
-
-
-

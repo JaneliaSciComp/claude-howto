@@ -32,3 +32,8 @@ See [example-settings.json](example-settings.json) for an example Claude Code se
 ## Tools
 
 This repository uses [Pixi](https://pixi.sh/) for Python environment management. Run `pixi install` to set up the environment.
+
+The project includes [Fileglancer](https://github.com/JaneliaSciComp/fileglancer), a file browser tool. Run it with:
+```bash
+pixi run fileglancer
+```
