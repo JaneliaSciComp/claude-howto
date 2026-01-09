@@ -26,9 +26,10 @@ Documentation and configuration for running Claude Code safely at Janelia Resear
 
 ```bash
 pixi install                 # Set up local environment
-pixi run claude              # Run Claude Code in dev container
-pixi run container-rebuild   # Rebuild dev container from scratch
-pixi run fileglancer         # Run Fileglancer (example app)
+pixi run container-rebuild   # Build/rebuild the dev container
+pixi run container-shell     # Open a shell in the container
+pixi run claude              # Run Claude Code in the container
+pixi run fileglancer         # Run Fileglancer locally (example app)
 ```
 
 ## Dev Container

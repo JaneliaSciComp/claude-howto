@@ -6,9 +6,10 @@ platforms = ["osx-arm64", "osx-64", "linux-aarch64", "linux-64"]
 version = "0.1.0"
 
 [tasks]
-fileglancer = "fileglancer"
-claude = "npx @devcontainers/cli exec --workspace-folder . bash -lc 'claude --dangerously-skip-permissions'"
+container-claude = "npx @devcontainers/cli exec --workspace-folder . bash -lc 'claude --dangerously-skip-permissions'"
+container-shell = "npx @devcontainers/cli exec --workspace-folder . bash"
 container-rebuild = "npx @devcontainers/cli up --workspace-folder . --remove-existing-container"
+fileglancer = "fileglancer"
 
 [dependencies]
 python = ">=3.10"
