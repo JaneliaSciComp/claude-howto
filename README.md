@@ -25,9 +25,10 @@ See [example-settings.json](example-settings.json) for an example Claude Code se
 
 ## Tools
 
-As an example, this repository uses [Pixi](https://pixi.sh/) for Python environment management. Run `pixi install` to set up the environment.
+This repository uses [Pixi](https://pixi.sh/) for Python environment management. Run `pixi install` to set up the environment.
 
-The project includes [Fileglancer](https://github.com/JaneliaSciComp/fileglancer), Janelia's internal bioimage browser tool. Run it with:
 ```bash
-pixi run fileglancer
+pixi run claude              # Run Claude Code in the dev container
+pixi run container-rebuild   # Rebuild the dev container from scratch
+pixi run fileglancer         # Run the Fileglancer bioimage browser
 ```
