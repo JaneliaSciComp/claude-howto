@@ -7,8 +7,14 @@ Running `pixi` or `uv` panics when run inside Claude Code's sandbox on macOS due
 ## Error Message
 
 ```
+Error: Exit code 101
+
 thread 'main2' panicked at /Users/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/system-configuration-0.6.1/src/dynamic_store.rs:154:1:
 Attempted to create a NULL object.
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+thread 'main' panicked at src/main.rs:49:10:
+Tokio executor failed, was there a panic?: Any { .. }
 ```
 
 ## Root Cause
