@@ -69,47 +69,18 @@ memory: 8
 disk: 60
 ```
 
-## Security Features
-
-### Network Firewall
-
-The container uses iptables to restrict outbound network access to allowed domains only:
-
-- **Anthropic**: api.anthropic.com, statsig.anthropic.com, sentry.io
-- **GitHub**: All GitHub IP ranges (fetched from api.github.com/meta)
-- **AWS S3**: us-east-1 IP ranges (fetched from ip-ranges.amazonaws.com)
-- **npm**: registry.npmjs.org
-- **Python/Pixi**: pypi.org, files.pythonhosted.org, conda.anaconda.org, conda-mapping.prefix.dev
-- **VS Code**: marketplace.visualstudio.com, vscode.blob.core.windows.net
-
-To add more allowed domains, edit `.devcontainer/init-firewall.sh`.
-
-To disable the firewall at runtime:
-```bash
-sudo iptables -F && sudo iptables -P INPUT ACCEPT && sudo iptables -P OUTPUT ACCEPT
-```
-
-To skip it entirely on container startup, comment out the firewall line in `.devcontainer/post-create.sh` and rebuild.
-
-### Privacy Settings
-
-The container sets environment variables to disable telemetry:
-- `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1`
-- `CLAUDE_CODE_DISABLE_ANALYTICS=1`
-
-## Host Mounts
-
-The container mounts these directories from the host:
-- `~/.claude` - Claude Code API keys and authentication
+To get started quickly, run `pixi run container-rebuild` followed by `pixi run claude`.
 
 ## Quick Start
 
+To get started quickly, run `pixi run container-rebuild` followed by `pixi run claude`. That will run these commands:
+
 ```bash
 # Build and start the container
-npx @devcontainers/cli up --workspace-folder .
+npx @devcontainers/cli up --workspace-folder . --remove-existing-container
 
 # Get a shell inside the container
-npx @devcontainers/cli exec --workspace-folder . bash
+npx @devcontainers/cli exec --workspace-folder . bash -lc 'claude --dangerously-skip-permissions'
 ```
 
 ## Commands
@@ -140,7 +111,6 @@ npx @devcontainers/cli exec --workspace-folder . bash -lc "claude --dangerously-
 ```
 
 You can ask Claude Code to "run the example" and it should execute `pixi run example` successfully. 
-
 
 ### Stop the Container
 
@@ -242,3 +212,36 @@ After rebuilding the container:
 # Inside the container
 nvidia-smi
 ```
+
+## Security Features
+
+### Network Firewall
+
+The container uses iptables to restrict outbound network access to allowed domains only:
+
+- **Anthropic**: api.anthropic.com, statsig.anthropic.com, sentry.io
+- **GitHub**: All GitHub IP ranges (fetched from api.github.com/meta)
+- **AWS S3**: us-east-1 IP ranges (fetched from ip-ranges.amazonaws.com)
+- **npm**: registry.npmjs.org
+- **Python/Pixi**: pypi.org, files.pythonhosted.org, conda.anaconda.org, conda-mapping.prefix.dev
+- **VS Code**: marketplace.visualstudio.com, vscode.blob.core.windows.net
+
+To add more allowed domains, edit `.devcontainer/init-firewall.sh`.
+
+To disable the firewall at runtime:
+```bash
+sudo iptables -F && sudo iptables -P INPUT ACCEPT && sudo iptables -P OUTPUT ACCEPT
+```
+
+To skip it entirely on container startup, comment out the firewall line in `.devcontainer/post-create.sh` and rebuild.
+
+### Privacy Settings
+
+The container sets environment variables to disable telemetry:
+- `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1`
+- `CLAUDE_CODE_DISABLE_ANALYTICS=1`
+
+## Host Mounts
+
+The container mounts these directories from the host:
+- `~/.claude` - Claude Code API keys and authentication
