@@ -69,11 +69,9 @@ memory: 8
 disk: 60
 ```
 
-To get started quickly, run `pixi run container-rebuild` followed by `pixi run claude`.
-
 ## Quick Start
 
-To get started quickly, run `pixi run container-rebuild` followed by `pixi run claude`. That will run these commands:
+To get started quickly, run `pixi run container-rebuild` followed by `pixi run container-claude`. That will run these commands:
 
 ```bash
 # Build and start the container
